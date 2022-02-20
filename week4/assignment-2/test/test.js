@@ -12,6 +12,11 @@ If the number is neither a multiple of 3 or 7 return that number as a string
 If any data type other than a number is passed return an error message */
 
 function taskComplete(arg) {
+    if(typeof arg === "number"){
+     if(arg  % 3 === 0 && arg % 7 === 0){
+         return "Good Evening"
+     }   
+ 
     if (arg === 1) {
         return 1
     }
@@ -24,14 +29,43 @@ function taskComplete(arg) {
     if (arg === 7) {
         return "Good Afternoon"
     }
-    if   (this.number % 3 == 0){
+    if   (arg % 3 === 0){
         return "Good Morning"
-    }else if (this.number % 7 == 0){
+    }else if (arg % 7 === 0){
         return "Good Afternoon"
     }else{
+        const str = arg.toString()
+        return str
+    } 
+
+}else{
         return "ERROR ONLY NUMBERS"
     }
 }
 it('returns 1 when passed 1',function(){
     expect (taskComplete(1)).to.equal(1)
+})
+it('returns 2 when passed 2',function(){
+    expect (taskComplete(2)).to.equal(2)
+})
+it('returns "Good Morning" when passed 3',function(){
+    expect (taskComplete(3)).to.equal("Good Morning")
+})
+it('returns "Good Afternoon" when passed 7',function(){
+    expect (taskComplete(7)).to.equal("Good Afternoon")
+})
+it('returns "Good Morning" when passed 3 or multiple thereof',function(){
+    expect (taskComplete(6)).to.equal("Good Morning")
+})
+it('returns "Good Afternoon" when passed 7 or multiple thereof',function(){
+    expect (taskComplete(14)).to.equal("Good Afternoon")
+})
+it('returns "Good Evening" when passed a multiple of 3 and 7',function(){
+    expect (taskComplete(21)).to.equal("Good Evening")
+})
+it('returns "" when passed neither a multiple of 3 and 7',function(){
+    expect (taskComplete(4)).to.equal("4")
+})
+it('returns "ERROR  ONLY NUMBERS" when passed not a number',function(){
+    expect (taskComplete('nope')).to.equal("ERROR ONLY NUMBERS")
 })
