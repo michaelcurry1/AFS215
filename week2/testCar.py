@@ -1,2 +1,0 @@
-def testCanCallCar():
-    Car()
